@@ -21,7 +21,7 @@ export default function () {
           mostly React Native. The middle also involves other language knowledge and frameworks such as NestJs, Firebase,
           etc. Be able to use tools such as Github proficiently.</p>
         <div >
-          <a style={style.contactBox}>
+          <a style={style.contactBox} href="mailto:zyf226317@gmail.com">
             <span style={style.wordMid}>Say hey to me</span>
             <MessageOutlined style={{fontSize: 30}}/>
           </a>
@@ -55,7 +55,7 @@ const style= {
     width: '35%',
     minWidth: 250,
     padding: 10,
-    backgroundColor: '#5a9',
+    // backgroundColor: '#5a9',
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',

@@ -14,9 +14,9 @@ export default function () {
   const [isHover,setHover]= useState(false);
   return(
     <div style={style.contentBox}>
-      <div >
-        <Button type="primary" shape="circle" icon={<CaretDownOutlined />} size="large" style={{backgroundColor: 'darkgreen', marginTop: '-50%'}}/>
-      </div>
+      {/*<div >*/}
+      {/*  <Button type="primary" shape="circle" icon={<CaretDownOutlined />} size="large" style={{backgroundColor: 'darkgreen', marginTop: '-50%'}}/>*/}
+      {/*</div>*/}
       <div style={style.mainBox}>
         <div style={isHover ? style.pictureBoxHover : style.pictureBox} onMouseOver={()=>setHover(true)}
              onMouseOut={()=>setHover(false)}>
@@ -118,13 +118,13 @@ export default function () {
         </div>
       </div>
       {/*--------------------this used for images combine----------------------------------*/}
-      <div style={style.mainBox}>
-        <div style={style.testBox}>
-          <Image src={T1} width="30%"/>
-          <Image src={T2} width="30%"/>
-          <Image src={T3} width="30%"/>
-        </div>
-      </div>
+      {/*<div style={style.mainBox}>*/}
+      {/*  <div style={style.testBox}>*/}
+      {/*    <Image src={T1} width="30%"/>*/}
+      {/*    <Image src={T2} width="30%"/>*/}
+      {/*    <Image src={T3} width="30%"/>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
 
   )

@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import {NavLink} from 'react-router-dom';
-import {Button, Divider, Image, Layout, Progress} from 'antd';
+import {Button, Divider, Image, Input, Layout, Progress} from 'antd';
 import Me from '../src/assets/images/me.jpg';
 import About from './pages/about';
 import Project from './pages/project';
@@ -25,6 +25,14 @@ const screenHeight = window.screen.height * 0.77;
 
 export default function App () {
   const [isHover,setHover]= useState(false);
+  const scrollToAnchor = (anchorName) => {
+    if(anchorName) {
+      let anchorElement = document.getElementById(anchorName);
+      if(anchorElement) {
+        anchorElement.scrollIntoView();
+      }
+    }
+  }
     return(
       <>
         <Layout style={{backgroundColor: '#c1cbc9'}}>
@@ -34,11 +42,11 @@ export default function App () {
                 <HomeFilled style={{color: 'darkgreen'}}/>
                 <span style={style.navWords}>&nbsp;Home</span>
               </a>
-              <a href={''}>
+              <a onClick={() => scrollToAnchor('about')}>
                 <ReadFilled style={{color: 'darkgreen'}}/>
                 <span style={style.navWords}>&nbsp;About Me</span>
               </a>
-              <a href={''}>
+              <a onClick={() => scrollToAnchor('project')}>
                 <FilePptFilled style={{color: 'darkgreen'}}/>
                 <span style={style.navWords}>&nbsp;Projects</span>
               </a>
@@ -75,7 +83,16 @@ export default function App () {
                   <h2>It is great to see you here!</h2>
                   <div style={style.smileIcon}><SmileOutlined style={{fontSize: 40, color: 'darkgreen'}}/></div>
                   <h2>Want to know more about me?</h2>
-                  <Button type="primary" shape="round" style={{backgroundColor: 'darkgreen', marginTop: 40}} icon={<ImportOutlined />}>More About Me</Button>
+                  <Button
+                    type="primary"
+                    shape="round"
+                    style={{backgroundColor: 'darkgreen', marginTop: 40}}
+                    icon={<ImportOutlined style={{marginRight: 5}}/>}
+                  >
+                    <a onClick={() => scrollToAnchor('about')} style={{color: '#fff'}}>
+                      More About Me
+                    </a>
+                  </Button>
                 </div>
               </div>
               <div style={style.skillSection}>
@@ -139,13 +156,19 @@ export default function App () {
             </div>
           </Content>
           <div style={style.footerButton}>
-            <Button type="primary" shape="circle" icon={<CaretDownOutlined />} size="large" style={{backgroundColor: 'darkgreen', marginTop: '-1%'}}/>
+            <a id='about'></a>
+            <Button onClick={() => scrollToAnchor('about')} type="primary" shape="circle" icon={<CaretDownOutlined />} size="large" style={{backgroundColor: 'darkgreen', marginTop: '-1%'}}/>
           </div>
         </Layout>
+        <a id='about'></a>
         <About />
+        <div style={{backgroundColor: '#c1cbc9', width: '100%', paddingLeft: '49%'}}>
+          <Button onClick={() => scrollToAnchor('project')} type="primary" shape="circle" icon={<CaretDownOutlined />} size="large" style={{backgroundColor: 'darkgreen', marginTop: '-50%'}}/>
+        </div>
+        <a id="project"></a>
         <Project />
         <Footer style={style.footerButton}>
-          <span>haha</span>
+          <span> If you're seeking a web DEVELOPER, contact me today!</span>
         </Footer>
       </>
       )
@@ -302,7 +325,7 @@ const style = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff5e8'
-  }
+  },
 }
 
 
