@@ -19,12 +19,16 @@ import {
   SmileOutlined,
   CaretDownOutlined,
 } from '@ant-design/icons';
+import { Document, Page } from 'react-pdf';
+import CV from '../src/assets/files/cv.pdf';
 
 const { Header, Sider, Content, Footer } = Layout;
 const screenHeight = window.screen.height * 0.77;
 
 export default function App () {
   const [isHover,setHover]= useState(false);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
   const scrollToAnchor = (anchorName) => {
     if(anchorName) {
       let anchorElement = document.getElementById(anchorName);
@@ -32,6 +36,9 @@ export default function App () {
         anchorElement.scrollIntoView();
       }
     }
+  }
+  const onDocumentLoadSuccess = (numPages) => {
+    setNumPages(numPages)
   }
     return(
       <>
@@ -58,14 +65,25 @@ export default function App () {
             </div>
             <div style={style.navSection}>
               <div>
-                <GithubFilled />&nbsp;&nbsp;
-                <PhoneFilled />&nbsp;&nbsp;
-                <MailFilled />&nbsp;&nbsp;
-                <FacebookFilled />&nbsp;&nbsp;
+                <a href="https://github.com/Vuinfang">
+                  <GithubFilled style={{color: 'darkgreen'}}/>
+                </a>&nbsp;&nbsp;
+                <a href="0424801314">
+                  <PhoneFilled style={{color: 'darkgreen'}}/>
+                </a>&nbsp;&nbsp;
+                <a href="mailto:zyf226317@gmail.com">
+                  <MailFilled style={{color: 'darkgreen'}}/>
+                </a>&nbsp;&nbsp;
+                <a href="https://www.facebook.com/profile.php?id=100008974120219">
+                  <FacebookFilled style={{color: 'darkgreen'}}/>
+                </a>&nbsp;&nbsp;
               </div>
-              <Button type="primary" shape="round" style={{backgroundColor: 'darkgreen'}} icon={<DownloadOutlined />}>
-                My Resume
-              </Button>
+                <Button
+                  type="primary"
+                  shape="round" style={{backgroundColor: 'darkgreen'}}
+                  icon={<DownloadOutlined />}>
+                  My Resume
+                </Button>
             </div>
           </Header>
           <Content style={style.contentSection}>
